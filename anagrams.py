@@ -10,14 +10,17 @@ for an arbitrary list of strings.
 
 # Your name here, and any other people/sources who helped.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "marcornett"
 
 import sys
+# import pstats
+# import timeit
+# import cProfile
 
 
-def alphabetize(string):
-    """Returns alphabetized version of the string."""
-    return "".join(sorted(string.lower()))
+# def alphabetize(string):
+#     """Returns alphabetized version of the string."""
+#     return "".join(sorted(string.lower()))
 
 
 def find_anagrams(words):
@@ -27,11 +30,15 @@ def find_anagrams(words):
     Example:
     {'dgo': ['dog'], 'act': ['cat', 'act']}
     """
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
+    anagrams = {}
+    for word in words:
+        alphabetized = "".join(sorted(word.lower()))
+        if alphabetized not in anagrams:
+            anagrams[alphabetized] = [word]
+        else:
+            anagrams[alphabetized].append(word)
+    # anagrams = {alphabetize(word): [w for w in words if alphabetize(
+    #     w) == alphabetize(word)] for word in words}
     return anagrams
 
 
@@ -50,3 +57,21 @@ def main(args):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+
+#     print(timeit.timeit("find_anagrams", setup="""def find_anagrams(words):
+#         anagrams = {alphabetize(word): [w for w in words if alphabetize(
+#             w) == alphabetize(word)] for word in words}
+#         return anagrams;
+
+#         with open(''.join(sys.argv[1:])) as f:
+#             words = f.read().split()""", number=10_000))
+
+# print(timeit.timeit('main(["words/short.txt"])',
+#                     setup='from __main__ import main', number=20))
+
+# cProfile.run('main(["words/short.txt"])')
+
+# 0.42881718
+# 0.455529222
+# 0.32561597200000003
+#
