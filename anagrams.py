@@ -13,7 +13,6 @@ for an arbitrary list of strings.
 __author__ = "marcornett"
 
 import sys
-# import pstats
 # import timeit
 # import cProfile
 
@@ -71,7 +70,5 @@ if __name__ == "__main__":
 
 # cProfile.run('main(["words/short.txt"])')
 
-# 0.42881718
-# 0.455529222
-# 0.32561597200000003
-#
+# 3.439347607 w/ alphabetize
+# 1.905289119 without
