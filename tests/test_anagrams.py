@@ -35,7 +35,7 @@ class TestAnagrams(unittest.TestCase):
         failure_text = (
             f'\nfind_anagrams() took {actual_time:.03f} seconds, which exceeds the '
             f'benchmark of {benchmark:.03f} seconds'
-            )
+        )
         self.assertLessEqual(actual_time, benchmark, failure_text)
 
     def test_correct_result(self):
@@ -57,7 +57,7 @@ class TestAnagrams(unittest.TestCase):
     #
     # Students:  Comment out the line below to enable the long test.
     #
-    @unittest.skip("Remove this line once short test passes")
+    # @unittest.skip("Remove this line once short test passes")
     def test_long(self):
         """Check find_anagrams() with long word list."""
         with open("words/long.txt") as f:
@@ -75,7 +75,7 @@ class TestAnagrams(unittest.TestCase):
         self.assertNotEqual(
             self.module.__author__, "???",
             "Author string is not completed"
-            )
+        )
 
 
 if __name__ == '__main__':
